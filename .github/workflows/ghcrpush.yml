@@ -1,0 +1,27 @@
+name: ghcr
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: ghcr login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: image build
+        run: |
+          docker build -t ghcr.io/pranay921/myapp:latest .
+
+      - name: image push
+        run: |
+          docker push ghcr.io/pranay921/myapp:latest
