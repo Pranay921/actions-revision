@@ -1,0 +1,24 @@
+name: image-push
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checout repo
+        uses: actions/checkout@v4
+
+      - name: docker login
+        uses: docker/login-action@v3
+        with:
+          username: pranay921
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: building image
+        run: docker build -t pranay921/myapp:latest .
+
+      - name: deploy image
+        run: docker push pranay921/myapp:latest
+
