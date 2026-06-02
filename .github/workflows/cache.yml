@@ -1,0 +1,28 @@
+name: js-cache
+
+on:
+  push:
+
+jobs:
+  js-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout Repo
+        uses: actions/checkout@v4
+
+      - name: setup node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: cache setup
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{runner.os}}
+
+      - name: node version
+        run: node --version
+
+      - name: basic display
+        run: echo " caching "
