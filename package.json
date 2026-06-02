@@ -1,0 +1,22 @@
+{
+  "name": "actions-revision",
+  "version": "1.0.0",
+  "description": "hello hello",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo Tests Passed",
+    "build": "echo Building Application"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranay921/actions-revision.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pranay921/actions-revision/issues"
+  },
+  "homepage": "https://github.com/Pranay921/actions-revision#readme"
+}
