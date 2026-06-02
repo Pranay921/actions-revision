@@ -1,0 +1,48 @@
+name: workflow-automation
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  schedule:
+    - cron: '0 0 * * 0'
+
+  workflow_dispatch:
+
+jobs:
+  test:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run tests
+        run: echo "this is the automated testing part"
+
+  code_review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Reviewing code
+        run: echo "the code is getting reviewed"
+
+  run_security:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Running security
+        run: echo "the code is under security service"
+
+  manual_deploy:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Manually deploying
+        run: echo "the code is under manual deployment"
