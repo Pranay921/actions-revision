@@ -1,0 +1,30 @@
+name: js-cache-two
+
+on:
+  push:
+
+jobs:
+  cache-automation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18,20]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: node js setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - name: cache setup
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: node-cache-${{runner.os}}
+
+      - name: simple print
+        run: echo "setup complete"
+
+          
