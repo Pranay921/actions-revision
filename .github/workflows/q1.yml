@@ -1,12 +1,14 @@
-name:
-  automation:
+name: automation
 
-branches:
-  main:
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   testing:
     runs-on: ubuntu-latest
+
     steps:
       - name: testing
         run: echo "testing"
