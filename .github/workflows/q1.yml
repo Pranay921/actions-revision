@@ -1,0 +1,15 @@
+name:
+  automation:
+
+branches:
+  main:
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing
+        run: echo "testing"
+
+      - name: building
+        run: echo "building"
